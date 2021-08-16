@@ -1,17 +1,18 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Pedidos
     </ion-title>
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-list *ngFor="let pc of pedidosClientes; let indice=index">
+    <p slot="start">{{indice + 1}}</p>
+    <ion-item>
+      <h3> {{ pc.tienda }} </h3>
+      <h3> {{ pc.total }} </h3>
+    </ion-item>
+  </ion-list>
 </ion-content>

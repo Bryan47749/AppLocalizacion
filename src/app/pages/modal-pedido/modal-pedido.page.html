@@ -12,20 +12,40 @@
 <ion-content>
   <ion-item>
     <ion-label position="stacked">Cédula/Ruc</ion-label>
-    <ion-input ></ion-input>
+    <ion-input disabled > {{cliente.ruc }}</ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="stacked">Tienda</ion-label>
-    <ion-input ></ion-input>
+    <ion-input disabled > {{cliente.tienda }}</ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="stacked">Teléfono</ion-label>
-    <ion-input></ion-input>
+    <ion-input disabled > {{cliente.telefono }}</ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="stacked">Ubicación Actual</ion-label>
-    <ion-input disabled> </ion-input>
+    <h4><strong><label> Productos </label></strong>  </h4>
+    <ion-buttons slot="end">
+      <ion-button (click)="abrirProductos()">
+        <ion-icon slot="icon-only" name="bookmarks-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-item>
-  <ion-button expand="block"  > Guardar </ion-button>
+  <ion-list>
+    <ion-item-sliding  *ngFor="let pd of pedidoDetalle; let indice = index;">
+      <ion-item >
+        <p slot="start">{{indice + 1}}</p>
+        <ion-label> {{pd.nombre}}, Cant: {{pd.cantidad}} </ion-label>
+        <p slot="end">Total: {{pd.cantidad * pd.precio}}</p>
+
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color='danger' (click)="eliminarDetalle(indice)" >
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+    
+  </ion-list>
+  <ion-button expand="block" (click)="guardarPedido()"  > Guardar </ion-button>
 
 </ion-content>

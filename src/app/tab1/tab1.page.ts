@@ -32,7 +32,7 @@ export class Tab1Page {
     this.Tracking =false;
     this.track = setInterval(() => {
       this.obtenerPosicionActual() 
-    }, 5000);
+    }, 20000);
   }
 
   obtenerPosicionActual(){

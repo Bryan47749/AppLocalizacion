@@ -13,4 +13,13 @@ export class PedidoService {
   getPedidosCamion(p:Pedido){
     return this.http.post<Pedido[]>(`${this.url}/pedido/pedidoCamion`, p);
   }
+
+  guardarPedido(p:Pedido){
+    return this.http.post<Pedido>(`${this.url}/pedido`, p);
+  }
+
+  entregarPedido(p:Pedido){
+    return this.http.post(`${this.url}/pedido/entregarPedido`, p);
+
+  }
 }

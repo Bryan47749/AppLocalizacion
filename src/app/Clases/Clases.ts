@@ -9,6 +9,21 @@ export class Conductor {
   camionID: number;
 }
 
+export class PedidoDetalle {
+  nombre ?: string;
+  cantidad?: number
+  productoID ?: number;
+  precio?: number;
+  total?: number;
+}
+
+export class Producto{
+  productoID?: number;
+  nombre?:string;
+  precio?: number;
+
+}
+
 export class Pedido{
   pedidoID?:number;
   clienteID?:number;

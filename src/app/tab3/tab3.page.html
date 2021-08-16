@@ -8,11 +8,25 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-list *ngFor="let pc of pedidosClientes; let indice=index">
-    <p slot="start">{{indice + 1}}</p>
-    <ion-item>
-      <h3> {{ pc.tienda }} </h3>
-      <h3> {{ pc.total }} </h3>
-    </ion-item>
+  <ion-list >
+    <ion-item-sliding *ngFor="let pc of pedidosClientes; let indice=index">
+      <ion-item >
+        <p slot="start">{{indice + 1}}</p>
+        <ion-label> {{ pc.tienda }} - {{ pc.total }} </ion-label>
+        <p slot="end"> {{pc.estado}} </p>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="success" (click)="EntregarPedido(pc)" >
+          <ion-icon  name="checkmark-outline"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+      <ion-item-options side="start">
+        <ion-item-option (click)="mostrarDetallePedido(pc)" >
+          <ion-icon name="eye-outline"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+
+    </ion-item-sliding>
+    
   </ion-list>
 </ion-content>

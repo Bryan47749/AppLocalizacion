@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AlertController, IonList, ModalController, ToastController } from '@ionic/angular';
+import { AlertController, IonList, ModalController, NavController, ToastController } from '@ionic/angular';
 import { Cliente, Conductor } from '../Clases/Clases';
 import { ClienteService } from '../servicios/cliente.service';
 
@@ -24,7 +24,8 @@ export class Tab2Page implements OnInit {
     private geolocation: Geolocation,
     private toastCtrl: ToastController,
     public alertController: AlertController,
-    private modalController: ModalController) { }
+    private modalController: ModalController,
+    ) { }
   ngOnInit(): void {
     this.obtenerPosicionActual();
     this.getClientes();
@@ -48,7 +49,6 @@ export class Tab2Page implements OnInit {
       this.presentToast(error.message);
     });
   }
-
   async presentModalPedido(c:Cliente) {
     const modal = await this.modalController.create({
       component: ModalPedidoPage,
@@ -58,22 +58,24 @@ export class Tab2Page implements OnInit {
       }
     });
     return await modal.present();
+    //this.navCtrl.navigateRoot('/main/tabs/tab3');
+
   }
 
   async presentAlertConfirm(c:Cliente) {
-    console.log(c)
+    //console.log(c)
     const alert = await this.alertController.create({
       header: 'Crear un Pedido',
       message: `Cliente:  ${c.ruc} - ${c.tienda}`,
       buttons: [
         {
-          text: 'Cancel',
+          text: 'Cancelar',
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
           }
         }, {
-          text: 'Okay',
+          text: 'Crear',
           handler: () => {
             this.presentModalPedido(c);
           }

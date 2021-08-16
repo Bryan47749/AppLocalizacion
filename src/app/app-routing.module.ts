@@ -18,6 +18,14 @@ const routes: Routes = [
   {
     path: 'modal-pedido',
     loadChildren: () => import('./pages/modal-pedido/modal-pedido.module').then( m => m.ModalPedidoPageModule)
+  },
+  {
+    path: 'modal-productos',
+    loadChildren: () => import('./pages/modal-productos/modal-productos.module').then( m => m.ModalProductosPageModule)
+  },
+  {
+    path: 'modaldetallepedido',
+    loadChildren: () => import('./pages/modaldetallepedido/modaldetallepedido.module').then( m => m.ModaldetallepedidoPageModule)
   }
 ];
 @NgModule({
